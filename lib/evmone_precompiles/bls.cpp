@@ -3,7 +3,7 @@
 #include <memory>
 #include <optional>
 #include <vector>
-#ifdef QTUM_BUILD
+#ifdef RUNEBASE_BUILD
 #include "../evmone/compat.hpp"
 #endif
 
@@ -246,7 +246,7 @@ void store(uint8_t _rx[128], const blst_fp2& _x) noexcept
     }
 
     const auto scratch_size = blst_p1s_mult_pippenger_scratch_sizeof(npoints) / sizeof(limb_t);
-#ifdef QTUM_BUILD
+#ifdef RUNEBASE_BUILD
     const auto scratch_space = compat::make_unique_for_overwrite<limb_t[]>(scratch_size);
 #else
     const auto scratch_space = std::make_unique_for_overwrite<limb_t[]>(scratch_size);
@@ -315,7 +315,7 @@ void store(uint8_t _rx[128], const blst_fp2& _x) noexcept
     }
 
     const auto scratch_size = blst_p2s_mult_pippenger_scratch_sizeof(npoints) / sizeof(limb_t);
-#ifdef QTUM_BUILD
+#ifdef RUNEBASE_BUILD
     const auto scratch_space = compat::make_unique_for_overwrite<limb_t[]>(scratch_size);
 #else
     const auto scratch_space = std::make_unique_for_overwrite<limb_t[]>(scratch_size);
@@ -381,7 +381,7 @@ void store(uint8_t _rx[128], const blst_fp2& _x) noexcept
     auto has_inf = false;
     blst_fp12 acc = *blst_fp12_one();
 
-#ifdef QTUM_BUILD
+#ifdef RUNEBASE_BUILD
     const auto Qlines = compat::make_unique_for_overwrite<blst_fp6[]>(68);
 #else
     const auto Qlines = std::make_unique_for_overwrite<blst_fp6[]>(68);

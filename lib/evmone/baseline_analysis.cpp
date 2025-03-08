@@ -6,7 +6,7 @@
 #include "eof.hpp"
 #include "instructions.hpp"
 #include <memory>
-#ifdef QTUM_BUILD
+#ifdef RUNEBASE_BUILD
 #include "compat.hpp"
 #endif
 
@@ -46,7 +46,7 @@ std::unique_ptr<uint8_t[]> pad_code(bytes_view code)
     // instruction at the code end.
     constexpr auto padding = 32 + 1;
 
-#ifdef QTUM_BUILD
+#ifdef RUNEBASE_BUILD
     auto padded_code = compat::make_unique_for_overwrite<uint8_t[]>(code.size() + padding);
 #else
     auto padded_code = std::make_unique_for_overwrite<uint8_t[]>(code.size() + padding);
