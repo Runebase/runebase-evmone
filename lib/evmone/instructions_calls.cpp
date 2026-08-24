@@ -342,7 +342,7 @@ Result create_impl(StackTop stack, int64_t gas_left, ExecutionState& state) noex
     if ((gas_left -= init_code_cost) < 0)
         return {EVMC_OUT_OF_GAS, gas_left};
 
-#ifdef QTUM_BUILD
+#ifdef RUNEBASE_BUILD
     if (endowment != 0)
         return {EVMC_CREATE_WITH_VALUE, gas_left};
 #endif
